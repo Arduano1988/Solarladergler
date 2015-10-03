@@ -7,7 +7,7 @@
 #include <SPI.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
-#include <VoltageReference.h>
+#include <VoltageReference.h> //Quelle:https://github.com/rlogiacco/VoltageReference
 
 VoltageReference vRef;
 
@@ -286,7 +286,7 @@ void countInsertedCurrency()
 	set_text(0, 30, "IL: " + String((int)insertCurrency) + " mAh", BLACK);
 
 }
-void setTemperature()
+void setTemperature() //Quelle:http://playground.arduino.cc/Learning/OneWire-DE
 {
 	OneWire ds(ONE_WIRE_BUS);
 	DallasTemperature sensors(&ds);
@@ -354,55 +354,3 @@ void setTemperature()
 	set_text(53, 10, "o", BLACK);
 	resultString = "";
 }
-
-///DEBUG
-
-//Serial.println("Aktuelle currencyMilliampsReadValue:" + String(currencyMilliampsReadValue));
-//Serial.println(currencyMilliampsReadValue,10);
-//Serial.println("(((temp_cpuVoltage) / 2.0) - currencyMilliampsReadValue) :" + String((((temp_cpuVoltage) / 2.0) - currencyMilliampsReadValue)));
-
-//Serial.println("(((temp_cpuVoltage) / 2.0) - currencyMilliampsReadValue) :" + String((((temp_cpuVoltage) / 2.0) - currencyMilliampsReadValue) * 1000) );
-
-
-
-//float readVcc() {
-//   //Read 1.1V reference against AVcc
-//   //set the reference to Vcc and the measurement to the internal 1.1V reference
-//  #if defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
-//    ADMUX = _BV(REFS0) | _BV(MUX4) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
-//  #elif defined (__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
-//     ADMUX = _BV(MUX5) | _BV(MUX0) ;
-//  #else
-//    ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
-//  #endif  
-// 
-//  delay(2); // Wait for Vref to settle
-//  ADCSRA |= _BV(ADSC); // Start conversion
-//  while (bit_is_set(ADCSRA,ADSC));  //measuring
-// 
-//  uint8_t low  = ADCL; // must read ADCL first - it then locks ADCH  
-//  uint8_t high = ADCH; // unlocks both
-// 
-//  long result = (high<<8) | low;
-// 
-//  result = 1125300L / result;  //Calculate Vcc (in mV); 1125300 = 1.1*1023*1000
-//  return result;  //Vcc in millivolts
-//}
-
-
-// Serial.println("setCurrentVolatage" + String(tempReadValue));
-
-
-//Serial.println("setMaxLoadVoltage" + String(tempReadValue));	
-
-/*Serial.println("vin" + String(vin));
-Serial.println("batterievin" + String(batterievin));
-Serial.println("currency" + String(currency));*/
-
-
-//temp_cpuVoltage = temp_cpuVoltage;
-//Serial.println(temp_cpuVoltage, 10);
-//Serial.println("Aktuelle CPU Spannung" + String(temp_cpuVoltage));
-//Serial.println("Aktuelle tempReadValue Spannung" + String(tempReadValue));
-
-//Serial.println("saveVoltagePINReadValue:" + String(saveVoltagePINReadValue));

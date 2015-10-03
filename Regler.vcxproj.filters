@@ -21,6 +21,9 @@
     <ClInclude Include="Visual Micro\.Solarladeregler.vsarduino.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Visual Micro\.Solar.vsarduino.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Regler.ino" />
